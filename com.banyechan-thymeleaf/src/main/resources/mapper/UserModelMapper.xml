@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.banyechan.mapper.UserModelMapper">
+  <resultMap id="BaseResultMap" type="com.banyechan.model.UserModel">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="role" jdbcType="INTEGER" property="role" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_modify_time" property="lastModifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_name, password, role, state,create_time,last_modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByMap"  resultMap="BaseResultMap" parameterType="Map">
+  	select 
+    <include refid="Base_Column_List" />
+    from user
+    <where> 1 = 1
+		<if test="userName != null">
+			and user_name = #{userName}
+		</if>
+		<if test="password != null">
+			and password = #{password}
+		</if>
+		<if test="state != null">
+			and state = #{state}
+		</if>
+		<if test="role != null">
+			and role = #{role}
+		</if>
+	</where>  
+  </select>
+  
+  <select id="listByMap"  resultMap="BaseResultMap" parameterType="Map">
+  	select 
+    <include refid="Base_Column_List" />
+    from user
+    <where> 1 = 1
+		<if test="userName != null">
+			and user_name like "%"#{userName}"%"
+		</if>
+		<if test="state != null">
+			and state = #{state}
+		</if>
+		<if test="role != null">
+			and role = #{role}
+		</if>
+	</where>
+	<if test="beginNum != null and pageSize != null">
+		limit #{beginNum},#{pageSize}
+	</if>
+  </select>
+  
+  <select id="getCountByMap" resultType="java.lang.Integer" parameterType="Map" >
+  	select count(1) from user
+    <where> 1 = 1
+		<if test="userName != null">
+			and user_name like "%"#{userName}"%"
+		</if>
+		<if test="state != null">
+			and state = #{state}
+		</if>
+		<if test="role != null">
+			and role = #{role}
+		</if>
+	</where>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.banyechan.model.UserModel">
+    insert into user (user_id, user_name, password, 
+      role, state)
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{role,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.banyechan.model.UserModel">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.banyechan.model.UserModel">
+    update user
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.banyechan.model.UserModel">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      role = #{role,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

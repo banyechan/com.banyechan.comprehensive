@@ -1,4 +1,4 @@
-package com.banyechan.banyechan_controller;
+package com.banyechan.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
