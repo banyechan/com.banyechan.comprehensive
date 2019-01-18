@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>密码</th>
+            <th>角色</th>
+            <th>状态</th>
+            <th>注册时间</th>
+        </thead>
+        <tbody>
+            <tr th:if="${#lists.size(userList) lt 1}">
+                <td>无数据</td>
+            </tr>
+            <tr th:each="user:${userList}">
+                <td th:text="${user.userId}">1</td>
+                <td th:text="${user.userName}">1</td>
+                <td th:text="${user.password}">1</td>
+
+                <td th:if="${user.role == 1}">管理员</td>
+                <td th:if="${user.role == 2}">操作员</td>
+                <td th:if="${user.role == 3}">用户</td>
+
+                <td th:switch="${user.state}">
+                    <label th:case="1">正常</label>
+                    <label th:case="2">冻结</label>
+                </td>
+                <td th:text="${#dates.format(user.createTime,'yyyy-MM-dd : HH:mm')}">1</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,6 +1,5 @@
 package com.banyechan.serviceImpl;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,9 +74,7 @@ public class UserServiceImpl implements UserService {
             if(user.getState() != null) {
                 map.put("state", user.getState());
             }
-
         }
-
 
         return userMapper.listByMap(map);
     }

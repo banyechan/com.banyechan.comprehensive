@@ -36,14 +36,6 @@ public class UserController {
     public ModelAndView test(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView();
 
-        UserModel user = new UserModel();
-        user.setUserName("shouji");
-        Integer userCount = userService.getCountByUser(user);
-        if(userCount == 0) {
-            System.out.println("count ======= 0");
-        }else {
-            System.out.println("count ！= 0");
-        }
         mav.setViewName("/user/test");
         return mav;
     }
@@ -52,10 +44,9 @@ public class UserController {
     @RequestMapping("/list")
     public ModelAndView userList(HttpServletRequest request, HttpServletResponse response,UserModel userModel,Integer pageNo) {
         ModelAndView mav = new ModelAndView();
+        logger.info("------		 列表页面		-------");
         mav.addObject("menuId", "2");
-
-
-
+        //userModel.setRole(4);
         List<UserModel> userList = userService.listByUser(userModel);
 
         Integer recordTotal = userService.getCountByUser(userModel);
@@ -83,8 +74,8 @@ public class UserController {
         String userName = httpRequest.getParameter("userName");
         String password = httpRequest.getParameter("password");
 
-        Pattern pattern = Pattern.compile(REGEXP_PASSWORD);
-        Matcher m = pattern.matcher(password);
+        //Pattern pattern = Pattern.compile(REGEXP_PASSWORD);
+        //Matcher m = pattern.matcher(password);
         if(userName == null || userName.equals("")){
             map.put("message", "请输入姓名!");
             flag = false;
