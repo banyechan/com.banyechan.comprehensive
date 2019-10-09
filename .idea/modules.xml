@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/banyechan-shiro/banyechan-shiro.iml" filepath="$PROJECT_DIR$/banyechan-shiro/banyechan-shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/banyechan-springboot-oauth2/banyechan-springboot-oauth2.iml" filepath="$PROJECT_DIR$/banyechan-springboot-oauth2/banyechan-springboot-oauth2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.banyechan-thymeleaf/com.banyechan-thymeleaf.iml" filepath="$PROJECT_DIR$/com.banyechan-thymeleaf/com.banyechan-thymeleaf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.banyechan.comprehensive.iml" filepath="$PROJECT_DIR$/com.banyechan.comprehensive.iml" />
+    </modules>
+  </component>
+</project>
