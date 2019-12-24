@@ -31,5 +31,6 @@
 
     <modules>
         <module>com.banyechan-thymeleaf</module>
+        <module>banyechan_escape_path</module>
     </modules>
 </project>

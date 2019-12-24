@@ -1,0 +1,22 @@
+server:
+  port: 6060
+
+spring:
+  application:
+    name: escape_path
+  # dev环境
+  profiles:
+    active: dev
+  # 数据源
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/escape_routes_db?characterEncoding=utf8&useSSL=false
+
+
+# mybaits 模块配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.banyechan.banyechan_escape_path.entity
+
