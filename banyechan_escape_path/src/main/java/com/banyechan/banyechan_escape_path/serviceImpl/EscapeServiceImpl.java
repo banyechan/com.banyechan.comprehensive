@@ -152,6 +152,13 @@ public class EscapeServiceImpl implements EscapeService {
         return result;
     }
 
+    @Override
+    public List<Map<String, Object>> listMapTest(Integer state) {
+        List<Map<String, Object>> result = edgeMapper.listMapTest(state);
+
+        return result;
+    }
+
 
     public Graph creatGraph(){
         log.info("----   初始化Graph    -----");

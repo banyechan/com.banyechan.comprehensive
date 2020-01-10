@@ -21,4 +21,6 @@ public interface EdgeMapper {
     int updateByPrimaryKey(Edge record);
 
     List<Edge> listByMap(Map<String,Object> map);
+
+    List<Map<String,Object>> listMapTest(Integer state);
 }

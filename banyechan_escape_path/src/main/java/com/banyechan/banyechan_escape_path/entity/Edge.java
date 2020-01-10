@@ -11,6 +11,8 @@ public class Edge {
 
     private Integer endPointId;
 
+    private Integer state;
+
     private Double distance;
 
     private Date createTime;
